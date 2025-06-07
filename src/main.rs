@@ -50,6 +50,9 @@ fn main() {
     println!("Query: {}", cli.query);
     println!("File Path: {}", cli.file_path);
     println!("Ignore Case: {}", cli.ignore_case);
-    let _ = run(cli);
+    if let Err(e) = run(cli) {
+        eprintln!("Application error: {}", e);
+        std::process::exit(1); // Exit with a non-zero status on error
+    }
     
 }
